@@ -1,0 +1,6 @@
+hic_kit: "arima"
+s3_buckets:
+  annotationqc: "pawsey1132.atol.refdata.annotationqc"
+  diamond_uniprot_database: "pawsey1132.testbucket/taxid2976176"
+  fcsgx: "pawsey1132.testbucket/taxid2976176"
+  nt_database: "pawsey1132.testbucket/taxid2976176"

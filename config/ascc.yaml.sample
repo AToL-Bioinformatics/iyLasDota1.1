@@ -1,0 +1,8 @@
+reads_path:
+  - ${PWD}/results/qc/reads/PACBIO_SMRT/bpa-ipm-pacbio-hifi-606323-m84073_260807_062841_s3.fastq.gz
+reads_type: "hifi"
+reads_layout: "SINGLE"
+sample_id: "iyLasDota1"
+scientific_name: "Lasioglossum dotatum"
+busco_lineages: "hymenoptera_odb10"
+taxid: 1039396

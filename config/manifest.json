@@ -1,0 +1,48 @@
+{
+  "assembly_version": 1,
+  "dataset_id": "iyLasDota1",
+  "scientific_name": "Lasioglossum dotatum",
+  "taxon_id": 1039396,
+  "busco_odb10_dataset_name": "hymenoptera",
+  "busco_odb12_dataset_name": "apoidea",
+  "ncbi_class": "Insecta",
+  "hic_motif": "GATC,GANTC,CTNAG,TTAA",
+  "mitochondrial_genetic_code_id": 5,
+  "mitohifi_reference_species": "Seladonia aeraria",
+  "oatk_hmm_name": "hymenoptera",
+  "augustus_dataset_name": "tiberius_model_cfg:insecta.yaml",
+  "genetic_code_id": 1,
+  "assembly_id": "c752cbcd-6761-4490-b245-5db3e2f91cbf",
+  "read_files": [
+    {
+      "name": "bpa-ipm-pacbio-hifi-606323-m84073_260807_062841_s3",
+      "data_type": "PACBIO_SMRT",
+      "base_url": "https://downloads-qcif.bioplatforms.com/bpa/ipm_staging/pacbio-hifi/BPAOPS-2190/20260818_IPM_AGRF_CAGRF26030155_m84073_260807_062841_s3/",
+      "single_end": [
+        {
+          "url": "https://data.bioplatforms.com/dataset/bpa-ipm-pacbio-hifi-606323-m84073_260807_062841_s3/resource/f1150f30e9e2e13044ba281bcb3bef94/download/606323_IPM_AGRF_m84073_260807_062841_s3.ccs.bam",
+          "md5sum": "f1150f30e9e2e13044ba281bcb3bef94"
+        }
+      ]
+    },
+    {
+      "name": "bpa-ipm-illumina-shortread-606323-sc2149464-sc3",
+      "data_type": "Hi-C",
+      "base_url": "https://downloads-qcif.bioplatforms.com/bpa/ipm_staging/illumina-shortread/BPAOPS-2127/20260630_IPM_BRF_WO24051_SC2149464-SC3/",
+      "r1": [
+        {
+          "url": "https://data.bioplatforms.com/dataset/bpa-ipm-illumina-shortread-606323-sc2149464-sc3/resource/879653aad306da35175ac6a231c2ab61/download/606323_IPM_BRF_SC2149464-SC3_CAGCAATA-ATTAGGAG_S1_L001_R1_001.fastq.gz",
+          "md5sum": "879653aad306da35175ac6a231c2ab61",
+          "lane_number": "L001"
+        }
+      ],
+      "r2": [
+        {
+          "url": "https://data.bioplatforms.com/dataset/bpa-ipm-illumina-shortread-606323-sc2149464-sc3/resource/062822533d721bb0e39eaf298f3b03d8/download/606323_IPM_BRF_SC2149464-SC3_CAGCAATA-ATTAGGAG_S1_L001_R2_001.fastq.gz",
+          "md5sum": "062822533d721bb0e39eaf298f3b03d8",
+          "lane_number": "L001"
+        }
+      ]
+    }
+  ]
+}

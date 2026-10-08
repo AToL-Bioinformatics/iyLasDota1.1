@@ -1,0 +1,4 @@
+sample,assembly_type,assembly_file
+iyLasDota1.1,PRIMARY,${PWD}/results/genomeassembly/iyLasDota1.1/iyLasDota1.1.pacbio_hifi.phased/scaffolding/asm_hap1_scaffolds_final.fa.gz
+iyLasDota1.1,HAPLO,${PWD}/results/genomeassembly/iyLasDota1.1/iyLasDota1.1.pacbio_hifi.phased/scaffolding/asm_hap2_scaffolds_final.fa.gz
+iyLasDota1.1,MITO,${PWD}/results/genomeassembly/iyLasDota1.1/iyLasDota1.1.pacbio_hifi.phased/mito/final_mitogenome.fasta

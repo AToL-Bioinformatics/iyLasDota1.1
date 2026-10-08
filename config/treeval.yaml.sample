@@ -1,0 +1,36 @@
+assembly:
+  assem_level: scaffold
+  assem_version: 1
+  sample_id: iyLasDota1
+  latin_name: Lasioglossum dotatum
+  defined_class: Insecta
+  project_id: AToL
+reference_file: ${PWD}/results/ascc/iyLasDota1.1/pacbio_hifi.phased/PRIMARY_HAPLO_combined.fasta.gz
+map_order: length
+assem_reads:
+  read_type: hifi
+  read_data:
+    - ${PWD}/results/qc/reads/PACBIO_SMRT/bpa-ipm-pacbio-hifi-606323-m84073_260807_062841_s3.fasta.gz
+  supplementary_data: path
+hic_data:
+  hic_cram:
+    - ${PWD}/results/qc/reads/Hi-C/bpa-ipm-illumina-shortread-606323-sc2149464-sc3.cram
+  hic_aligner: bwamem2
+kmer_profile:
+  # kmer_length will act as input for kmer_read_cov fastk and as the name of folder in profile_dir
+  kmer_length: 31
+  profile: ${PWD}/results/genomeassembly/iyLasDota1.1/iyLasDota1.1.pacbio_hifi.phased
+self_comp:
+  motif_len: 0
+intron:
+  size: "50k"
+telomere:
+  teloseq: TTAGGG
+synteny:
+  - /path/to/synteny.fasta
+busco:
+  lineages_path: ${PWD}/resources/staging/busco
+  lineage: apoidea_odb12
+alignment:
+  genesets:
+    - /path/to/genesets.csv

@@ -1,0 +1,5 @@
+hic_kit: "arima"
+s3_buckets:
+  diamond_uniprot_database: "pawsey1132.atol.refdata.uniprot.diamond/diamond"
+  fcsgx: "pawsey1132.atol.refdata.fcsgx/fcsgx"
+  nt_database: "pawsey1132.atol.refdata.v1/ncbi_nucleotide_blast"

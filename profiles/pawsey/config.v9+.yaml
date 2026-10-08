@@ -1,0 +1,68 @@
+---
+apptainer-prefix: $SINGULARITY_CACHEDIR/library
+benchmark-extended: True
+cluster-generic-cancel-cmd: scancel
+cluster-generic-status-cmd: status-sacct-robust.sh
+cluster-generic-submit-cmd: mkdir -p logs/slurm/{rule} &&
+  sbatch
+  {resources.partitionFlag}
+  --cpus-per-task={threads}
+  --job-name={rule}-smk
+  --mem={resources.mem_mb}
+  --output=logs/slurm/{rule}/{rule}-%j.out
+  --parsable
+  --time={resources.runtime}
+configfile:
+  - profiles/pawsey/workflow.config.yaml
+default-resources:
+  - partitionFlag=""
+  - mem_mb=4000
+  - runtime=5
+executor: cluster-generic
+jobs: 128
+keep-going: true
+keep-storage-local-copies: true
+latency-wait: 60
+local-cores: 2
+max-jobs-per-second: 50
+max-status-checks-per-second: 10
+printshellcmds: true
+rerun-incomplete: true
+rerun-triggers:
+  - mtime
+restart-times: 0
+set-resources:
+  broker_runs:
+    partitionFlag: "--partition=copy"
+  download_busco_lineage_files:
+    partitionFlag: "--partition=copy"
+  download_file:
+    partitionFlag: "--partition=copy"
+  ont_qc:
+    partitionFlag: "--partition=highmem"
+  pipeline_result_uploader:
+    partitionFlag: "--partition=copy"
+  stage_s3_bucket:
+    partitionFlag: "--partition=copy"
+  transfer_raw_reads:
+    partitionFlag: "--partition=copy"
+singularity-args: -B ${PWD},${TMPDIR},/scratch
+  -H $(mktemp -d)
+  --pwd ${PWD}
+  --cleanenv --containall --writable-tmpfs
+  --env BPA_APIKEY=${BPA_APIKEY}
+  --env BPA_MIRROR_PASSWD=${BPA_MIRROR_PASSWD}
+  --env BPA_MIRROR_USER=${BPA_MIRROR_USER}
+  --env CANOPY_BASE_URL=${CANOPY_BASE_URL}
+  --env CANOPY_PASSWORD=${CANOPY_PASSWORD}
+  --env CANOPY_USERNAME=${CANOPY_USERNAME}
+  --env RCLONE_CONFIG_UPLOAD_ACCESS_KEY_ID=${RCLONE_CONFIG_UPLOAD_ACCESS_KEY_ID}
+  --env RCLONE_CONFIG_UPLOAD_ENDPOINT=${RCLONE_CONFIG_UPLOAD_ENDPOINT}
+  --env RCLONE_CONFIG_UPLOAD_PROVIDER=${RCLONE_CONFIG_UPLOAD_PROVIDER}
+  --env RCLONE_CONFIG_UPLOAD_SECRET_ACCESS_KEY=${RCLONE_CONFIG_UPLOAD_SECRET_ACCESS_KEY}
+  --env RCLONE_CONFIG_UPLOAD_TYPE=${RCLONE_CONFIG_UPLOAD_TYPE}
+  --env WEBIN_PASS=${WEBIN_PASS}
+  --env WEBIN_USER=${WEBIN_USER}
+singularity-prefix: $SINGULARITY_CACHEDIR/library
+use-conda: False
+use-singularity: true

@@ -1,0 +1,9 @@
+
+- id: iyLasDota1
+  platform: illumina_hic
+  reads:
+    - ${PWD}/results/qc/reads/Hi-C/bpa-ipm-illumina-shortread-606323-sc2149464-sc3.cram
+- id: iyLasDota1
+  platform: pacbio_hifi
+  reads:
+    - ${PWD}/results/qc/reads/PACBIO_SMRT/bpa-ipm-pacbio-hifi-606323-m84073_260807_062841_s3.fastq.gz

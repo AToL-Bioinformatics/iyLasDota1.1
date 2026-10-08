@@ -1,0 +1,50 @@
+---
+# The pawsey_gpu profile is used for two reasons, both requiring snakemake
+# 9.27.0.
+# 1. The Pawsey GPU queue doesn't accept the normal SBATCH arguments so we
+#    override the `cluster-generic-submit-cmd`. Tiberius is limited by normal
+#    RAM, which is controlled by the number of "GPU allocation-packs" for the
+#    job (29.44 GB normal RAM per pack). This is set to attempt + 1 in the
+#    Pawsey profile (i.e. approx 60 GB RAM on the first attempt). The job is
+#    rejected if we request normal RAM separately. `gres=gpu` and
+#    `gpus-per-task` control the number of GPUs, and `ntasks` and `nodes` must
+#    be set to 1
+cluster-generic-submit-cmd: mkdir -p logs/slurm/{rule} &&
+  sbatch
+  {resources.partitionFlag}
+  --account=${GPU_ACCOUNT}
+  --gpus-per-task={resources.gpu}
+  --gres=gpu:{resources.gpu}
+  --job-name={rule}-smk
+  --nodes=1
+  --ntasks=1
+  --output=logs/slurm/{rule}/{rule}-%j.out
+  --parsable
+  --time={resources.runtime}
+default-resources:
+  - partitionFlag="--partition=gpu"
+  - runtime=5
+set-resources:
+  tiberius:
+    gpu: "attempt + 1"
+    runtime: "60 if attempt==1 else 1440"
+# 2. The Pawsey Tiberius container OOMs with containall so we override
+#    `singularity-args` (note the official Tiberius container works fine with
+#    containall).
+singularity-args: -B ${PWD},${TMPDIR},/scratch
+  -H $(mktemp -d)
+  --pwd ${PWD}
+  --cleanenv --writable-tmpfs
+  --env BPA_APIKEY=${BPA_APIKEY}
+  --env BPA_MIRROR_PASSWD=${BPA_MIRROR_PASSWD}
+  --env BPA_MIRROR_USER=${BPA_MIRROR_USER}
+  --env CANOPY_BASE_URL=${CANOPY_BASE_URL}
+  --env CANOPY_PASSWORD=${CANOPY_PASSWORD}
+  --env CANOPY_USERNAME=${CANOPY_USERNAME}
+  --env RCLONE_CONFIG_UPLOAD_ACCESS_KEY_ID=${RCLONE_CONFIG_UPLOAD_ACCESS_KEY_ID}
+  --env RCLONE_CONFIG_UPLOAD_ENDPOINT=${RCLONE_CONFIG_UPLOAD_ENDPOINT}
+  --env RCLONE_CONFIG_UPLOAD_PROVIDER=${RCLONE_CONFIG_UPLOAD_PROVIDER}
+  --env RCLONE_CONFIG_UPLOAD_SECRET_ACCESS_KEY=${RCLONE_CONFIG_UPLOAD_SECRET_ACCESS_KEY}
+  --env RCLONE_CONFIG_UPLOAD_TYPE=${RCLONE_CONFIG_UPLOAD_TYPE}
+  --env WEBIN_PASS=${WEBIN_PASS}
+  --env WEBIN_USER=${WEBIN_USER}
