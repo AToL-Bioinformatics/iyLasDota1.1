@@ -10,7 +10,7 @@ configfile: "config/config.yaml"
 # declare https://github.com/AToL-Bioinformatics/genome-launcher-workflow as a module
 module genome_launcher_workflow:
     snakefile: 
-        github("AToL-Bioinformatics/genome-launcher-workflow", path="workflow/Snakefile", tag="0.18.1.dev3")
+        github("AToL-Bioinformatics/genome-launcher-workflow", path="workflow/Snakefile", tag="0.18.1.dev4")
     config:
         config
 
